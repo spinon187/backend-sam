@@ -1,12 +1,11 @@
 package com.lambdaschool.health;
 
-import com.lambdaschool.health.model.Role;
-import com.lambdaschool.health.model.User;
-import com.lambdaschool.health.model.UserInfo;
-import com.lambdaschool.health.model.UserRoles;
+import com.lambdaschool.health.model.*;
 import com.lambdaschool.health.repository.RoleRepository;
 import com.lambdaschool.health.repository.UserInfoRepository;
 import com.lambdaschool.health.repository.UserRepository;
+import net.bytebuddy.asm.Advice;
+import org.hibernate.mapping.Array;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,17 +50,19 @@ public class SeedData implements CommandLineRunner
         data.add(new UserRoles(new User(), r3));
 
 
-        User u1 = new User("test", "testing", users);
+        User u1 = new User("test", "1234", users);
 
-        User u2 = new User("admin", "password", admins);
+        User u2 = new User("admin", "1234", admins);
 
-        User u3 = new User("sam", "gottem", data);
+        User u3 = new User("sam", "1234", data);
 
-        UserInfo i3 = new UserInfo("sam","Sam", "Rodriguez", 140);
+        UserInfo i3 = new UserInfo("sam","Sam", "Rodriguez", 140, "Male", 24,69,0, "To eat an entire pizza solo", 1);
 
         inforepo.save(i3);
         userrepos.save(u1);
         userrepos.save(u2);
         userrepos.save(u3);
+
+
     }
 }

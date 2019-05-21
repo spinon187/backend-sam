@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -36,6 +37,7 @@ public class UserInfoController
     private UserInfoService userInfoService;
 
     @GetMapping(value = "/user", produces = {"application/json"})
+    @CrossOrigin(origins = "http://https://samr-health.herokuapp.com/current")
     @ApiOperation(value = "Returns the current users info", response = UserInfo.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Student Found", response = UserInfo.class),
@@ -44,6 +46,7 @@ public class UserInfoController
     public ResponseEntity<?> listAllInfo()  {
         ArrayList<UserInfo> info = userInfoService.findAll();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         String userName = authentication.getName();
         UserInfo user = userInfoService.findUserName(userName);
         if (authentication == null) {
@@ -59,6 +62,7 @@ public class UserInfoController
 
 
     @PutMapping(value = "/user/{username}")
+    @CrossOrigin(origins = "http://https://samr-health.herokuapp.com/current")
     @ApiOperation(value = "Updates the Users info", notes = "send body in a json with fname, lname, weight, or id", response = void.class)
     public ResponseEntity<?> updateUserInfo(@RequestBody UserInfo updateUserInfo, @PathVariable String username)
     {

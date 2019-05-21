@@ -62,6 +62,31 @@ public class UserInfoServiceImpl implements UserInfoService
             {
                 currentUser.setLname(userInfo.getLname());
             }
+            if(userInfo.getAge() != currentUser.getAge())
+            {
+                currentUser.setAge(userInfo.getAge());
+            }
+            if(userInfo.getEgoal() != null)
+            {
+                currentUser.setEgoal(userInfo.getEgoal());
+            }
+            if(userInfo.getGender() != null)
+            {
+                currentUser.setGender(userInfo.getGender());
+            }
+            if(userInfo.getWeeklyworkoutdays() != currentUser.getWeeklyworkoutdays())
+            {
+                currentUser.setWeeklyworkoutdays(userInfo.getWeeklyworkoutdays());
+            }
+            if(userInfo.getHeight() != currentUser.getHeight())
+            {
+                currentUser.setHeight(userInfo.getHeight());
+            }
+            if(userInfo.getMealsaday() != currentUser.getMealsaday())
+            {
+                currentUser.setMealsaday(userInfo.getMealsaday());
+            }
+
 
 
             return currentUser;

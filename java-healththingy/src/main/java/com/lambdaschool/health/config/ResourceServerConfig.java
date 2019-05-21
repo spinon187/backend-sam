@@ -42,7 +42,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
             .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 
         // http.requiresChannel().anyRequest().requiresSecure();
-        http.csrf().disable();
+//        http.csrf().disable();
         http.headers().frameOptions().disable();
     }
 }
